@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="generator" content="Linkvertise Bypasser by Faolan">
+  <title></title>
+  <script>
+  try{
+function start() {
+document.getElementById("h").innerHTML = "Attempting to bypass"
+document.getElementById("ad").href = "#"
+document.getElementById("ad").innerHTML = ""
+url = document.getElementById("url").value
+bypass(url)
+}
+
+
+function bypass(url) {
+try {
+urlobj = new URL(url)
+path = urlobj.pathname
+let o = {
+    timestamp: new Date().getTime(),
+    random: "375123"
+  },
+  url1 = "https://linkvertise.net/api/v1/redirect/link/static" + path
+cors = "https://cors-anywhere.herokuapp.com/"
+
+
+
+fetch(cors + url1).then(r => r.json()).then(json => {
+
+  if (json && json.data.link.id) {
+
+    o.link_id = json.data.link.id
+    url1 = "https://linkvertise.net/api/v1/redirect/link" + path + "/target?serial=" + btoa(JSON.stringify(o))
+  }
+
+}).then(() => fetch(cors + url1)).then(r => r.json()).then(json => {
+  console.log("fetched 2")
+  if (json && json.data.target) {
+
+ bypassed = json.data.target
+//return bypassed
+document.getElementById("h").innerHTML = "<b> Succsessfully bypassed! Go to the link below:</b> <br>"
+
+document.getElementById("ad").href = bypassed
+document.getElementById("ad").innerHTML = bypassed
+  }
+})
+} catch {
+document.getElementById("h").innerHTML = "Something went wrong"
+}
+}
+} catch {
+alert("Something went wrong")
+}
+
+</script>
+<style></style><style id="9433053f-7a88-4492-9515-b9c8e280b7bd">@import "https://files.catbox.moe/frrljv.ttf"</style></head>
+<body style="visibility: visible;">
+<h1> <a href style="font-family: &quot;Google Sans Regular&quot;, Arial;"="https://FaolanX.github.io/linkvertisebypasser">Linkvertise Bypasser</a> - <a href style="font-family: &quot;Google Sans Regular&quot;, Arial;"="https://www.youtube.com/ARMGeometryDash?sub_confirmation=1">By Faolan</a></h1>
+<input type="text" placeholder="Paste Linkvertise URL" id="url" style="font-family: &quot;Google Sans Regular&quot;, Arial;">
+<button onclick="start()" style="font-family: &quot;Google Sans Regular&quot;, Arial;">Attempt to bypass</button>
+<h1 id="h"></h1>
+<a href="http://schoolisover.altervista.org/LinkvertiseBypasser/#" id="ad"></a>
+
+
+</body></html>
