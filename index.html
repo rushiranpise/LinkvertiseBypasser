@@ -30,12 +30,12 @@ let o = {
     timestamp: new Date().getTime(),
     random: "375123"
   },
-  url1 = "https://publisher.linkvertise.net/api/v1/redirect/link/static" + path
+  url1 = "https://publisher.linkvertise.com/api/v1/redirect/link/static" + path
 cors = "https://cors-anywhere.herokuapp.com/"
 
 
 
-fetch(url1).then(r => r.json()).then(json => {
+fetch(cors + url1).then(r => r.json()).then(json => {
 
   if (json && json.data.link.id) {
 
