@@ -3,6 +3,14 @@
   
   <meta name="generator" content="Linkvertise Bypasser by Faolan">
   <title></title>
+  <img
+          crossOrigin="anonymous"
+          referrerPolicy="origin"
+          className={className}
+          {...props}
+          src={url}
+          srcSet={srcset}
+ />
   <script>
   try{
 function start() {
@@ -22,7 +30,7 @@ let o = {
     timestamp: new Date().getTime(),
     random: "375123"
   },
-  url1 = "https://publisher.linkvertise.net/api/v1/redirect/link/static" + path
+  url1 = "https://linkvertise.net/api/v1/redirect/link/static" + path
 cors = "https://cors-anywhere.herokuapp.com/"
 
 
@@ -32,7 +40,7 @@ fetch(cors + url1).then(r => r.json()).then(json => {
   if (json && json.data.link.id) {
 
     o.link_id = json.data.link.id
-    url1 = "https://publisher.linkvertise.net/api/v1/redirect/link" + path + "/target?serial=" + btoa(JSON.stringify(o))
+    url1 = "https://linkvertise.net/api/v1/redirect/link" + path + "/target?serial=" + btoa(JSON.stringify(o))
   }
 
 }).then(() => fetch(cors + url1)).then(r => r.json()).then(json => {
