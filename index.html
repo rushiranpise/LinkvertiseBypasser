@@ -31,9 +31,6 @@ let o = {
     random: "375123"
   },
   url1 = "https://publisher.linkvertise.com/api/v1/redirect/link/static" + path
-cors = "https://cors-anywhere.herokuapp.com/"
-
-
 
 fetch(url1).then(r => r.json()).then(json => {
 
@@ -43,7 +40,7 @@ fetch(url1).then(r => r.json()).then(json => {
     url1 = "https://publisher.linkvertise.com/api/v1/redirect/link" + path + "/target?serial=" + btoa(JSON.stringify(o))
   }
 
-}).then(() => fetch(cors + url1)).then(r => r.json()).then(json => {
+}).then(() => fetch(url1)).then(r => r.json()).then(json => {
   console.log("fetched 2")
   if (json && json.data.target) {
 
