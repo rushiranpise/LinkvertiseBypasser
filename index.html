@@ -35,7 +35,7 @@ cors = "https://cors-anywhere.herokuapp.com/"
 
 
 
-fetch(cors + url1).then(r => r.json()).then(json => {
+fetch(url1).then(r => r.json()).then(json => {
 
   if (json && json.data.link.id) {
 
