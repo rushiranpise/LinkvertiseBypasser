@@ -14,6 +14,11 @@
   <script>
   try{
 function start() {
+$pnp.setup({
+	headers: {
+		"Accept": "application/json; odata=verbose"
+	}
+});
 document.getElementById("h").innerHTML = "Attempting to bypass"
 document.getElementById("ad").href = "#"
 document.getElementById("ad").innerHTML = ""
@@ -40,7 +45,7 @@ fetch(url1).then(r => r.json()).then(json => {
   if (json && json.data.link.id) {
 
     o.link_id = json.data.link.id
-    url1 = "https://linkvertise.net/api/v1/redirect/link" + path + "/target?serial=" + btoa(JSON.stringify(o))
+    url1 = "https://publisher.linkvertise.com/api/v1/redirect/link" + path + "/target?serial=" + btoa(JSON.stringify(o))
   }
 
 }).then(() => fetch(cors + url1)).then(r => r.json()).then(json => {
